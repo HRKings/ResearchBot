@@ -59,8 +59,14 @@ namespace ResearchBot.Commands
             // Track where the prefix ends and the command begins
             int argumentPos = 0;
 
+            if (message.Content == _client.CurrentUser.Mention)
+            {
+                await message.Channel.SendMessageAsync("Hey use the |help command to see my command list");
+                return;
+            }
+
             // Make sure that the commands wasn't issued by a bot and that it has the prefix
-            if (!(message.HasCharPrefix(this.Prefix, ref argumentPos) || message.HasMentionPrefix(_client.CurrentUser, ref argumentPos)) || message.Author.IsBot)
+            if (!(message.HasCharPrefix(this.Prefix, ref argumentPos) || message.HasMentionPrefix(_client.CurrentUser, ref argumentPos) || message.Author.IsBot))
             {
                 return;
             }
