@@ -105,7 +105,7 @@ namespace ResearchBot.Commands.Modules
 
         [Command("emote")]
         [Summary("Sends an emote")]
-        public async Task SaysAsync([Remainder] [Summary("The emote to send")] string link)
+        public async Task EmoteAsync([Remainder] [Summary("The emote to send")] string link)
         {
             /*foreach (var tag in Context.Message.Tags)
             {
@@ -113,10 +113,10 @@ namespace ResearchBot.Commands.Modules
                 await ReplyAsync(Emote.Parse($"<:{(tag.Value as Emote).Name}:{tag.Key.ToString()}>").Url);
             }*/
 
-            EmbedBuilder img = new EmbedBuilder();
+            //EmbedBuilder img = new EmbedBuilder();
             //img.ImageUrl = link;
 
-            img.WithThumbnailUrl(link);
+            //img.WithThumbnailUrl(link);
 
             await Context.Channel.SendFileAsync(stream: GetStreamFromUrl(link), "emote.jpg");
         }
